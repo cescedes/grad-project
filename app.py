@@ -9,7 +9,6 @@ import numpy as np
 import struct
 import os
 
-
 #AES şifreleme
 
 # AES anahtarı
@@ -77,7 +76,6 @@ def decrypt_the_file():
     else:
         messagebox.showerror(title="Hata:", message="Dosya yüklenmedi.")
 
-
 # GÖRSEL STEG 
 
 def genData(data):
@@ -116,7 +114,6 @@ def modPix(pix, data):
         yield pix[3:6]
         yield pix[6:9]
 
-
 def encode_enc(newimg, data):
     w = newimg.size[0]
     (x, y) = (0, 0)
@@ -136,7 +133,6 @@ def encode():
     data_input= data_popup()
     if (len(data_input) == 0):
         raise ValueError('Boş!')
-
 
     newimg = image.copy()
     encode_enc(newimg, data_input)
@@ -166,18 +162,14 @@ def decode():
         data += chr(int(binstr, 2))
         if (pixels[-1] % 2 != 0):
             return data
-
-
+        
 # GUI
-
-
 
 root = tk.Tk()
 root.title("AES + Steganografi.")
 
 #canvas = tk.Canvas(root, height=300, width=300, bg="#FF9FCE")
 #canvas.pack()
-
 
 def encode_popup():
     image_name=simpledialog.askstring("Şifrele.","Görsel ismini uzantısıyla beraber yazınız.")
@@ -195,7 +187,6 @@ def output():
     f = open( 'görsel_steg_çıktı.txt', 'w' )
     f.write(decode())
     f.close()
-
 
 head=tk.Label(root,text="\nAES ŞİFRELEME\n",bg="#FF9FCE",fg="black")
 head.pack(padx=10)
@@ -224,8 +215,6 @@ root.geometry("400x400")
 
 root.mainloop()
 
-
-
 class Application(Frame):
     container = 0
     information = 0
@@ -242,7 +231,6 @@ class Application(Frame):
     infoString = ''
     infoHeader = 0
     maxFrames = 0
-
 
     def __init__(self, root):
         Frame.__init__(self, root, bg="#FF9FCE")
@@ -468,7 +456,6 @@ class Application(Frame):
         x = (xwidth / 2) - (width / 2)
         y = (yheight / 2) - (height / 2)
         self.master.geometry('%dx%d+%d+%d' % (width, height, x, y))
-        
 
     def ext_to_bits(self, ext):
         bits = ''
